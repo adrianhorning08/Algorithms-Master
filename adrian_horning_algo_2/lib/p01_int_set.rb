@@ -75,7 +75,6 @@ class ResizingIntSet
     resize! if @count == num_buckets
     self[num] << num
     @count +=1
-    # num
   end
 
   def remove(num)
