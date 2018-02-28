@@ -30,7 +30,7 @@ class Hash
   def hash
     result = 0
     self.each do |key, val|
-      result += self[key].ord * val .ord
+      result += self[key].ord * val.ord
     end
     result
   end
