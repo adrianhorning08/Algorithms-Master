@@ -47,35 +47,28 @@ class LinkedList
   end
 
   def get(key)
-    while @head.next.key != @tail
-      return @head.next.val if @head.next.key == key
-      @head.next
-    end
-    false
+
   end
 
   def include?(key)
-    while @head.next.key != @tail
-      return true if @head.next.key == key
-      @head.next
+    curr = @head.next
+    while curr != nil
+      return true if curr.key == key
+      curr = curr.next
     end
     false
   end
 
   def append(key, val)
+    return false if include?(key)
     node = Node.new(key,val)
-    @tail.next = node
-    @tail = node
+    node.prev = @tail.prev
+    node.next = @tail
+    @tail.prev = node
   end
 
   def update(key, val)
-    each { |link| return link.val = val if link.key == key }
-    new_link = Link.new(key, val)
-    @tail.prev.next = new_link
-    new_link.prev = @tail.prev
-    new_link.next = @tail
-    @tail.prev = new_link
-    new_link
+
   end
 
   def remove(key)
