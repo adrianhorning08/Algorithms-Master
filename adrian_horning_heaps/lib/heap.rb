@@ -2,9 +2,11 @@ class BinaryMinHeap
   attr_reader :store, :prc
 
   def initialize(&prc)
+    @store = []
   end
 
   def count
+    @store.length
   end
 
   def extract
@@ -20,7 +22,9 @@ class BinaryMinHeap
   def self.child_indices(len, parent_index)
   end
 
-  def self.parent_index(child_index)
+  def self.parent_index(child_idx)
+    raise "root has no parent" if child_idx == 0
+    (child_idx - 1) /2
   end
 
   def self.heapify_down(array, parent_idx, len = array.length, &prc)
