@@ -15,7 +15,7 @@ class BinaryMinHeap
     val = @store.first
     self.class.swap!(@store, 0, count-1)
     @store.pop
-    self.class.heapify_down(@store, 0, len=count)
+    self.class.heapify_down(@store, 0, len = count)
     val
   end
 
