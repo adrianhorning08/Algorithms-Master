@@ -19,7 +19,13 @@ class BinaryMinHeap
   end
 
   public
-  def self.child_indices(len, parent_index)
+  def self.child_indices(len, parent_idx)
+    parent_idx_times_two = parent_idx * 2
+    if parent_idx_times_two + 2 == len
+      [parent_idx_times_two + 1]
+    else
+      [parent_idx_times_two + 1, parent_idx_times_two + 2]
+    end
   end
 
   def self.parent_index(child_idx)
