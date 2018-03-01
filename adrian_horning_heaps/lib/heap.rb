@@ -11,12 +11,22 @@ class BinaryMinHeap
   end
 
   def extract
+    raise "no element to extract" if count == 0
+    val = @store.first
+    self.class.swap!(@store, 0, count-1)
+    @store.pop
+    self.class.heapify_down(@store, 0, len=count)
+    val
   end
 
   def peek
+    raise "no element to peek" if count == 0
+    @store.first
   end
 
   def push(val)
+    @store << val
+    self.class.heapify_up(@store, count - 1, &prc)
   end
 
   public
