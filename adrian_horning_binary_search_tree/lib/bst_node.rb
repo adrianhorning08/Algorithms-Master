@@ -4,8 +4,8 @@ class BSTNode
 
   def initialize(value)
     @value = value
-    @left = value
-    @right = value
+    @left = nil
+    @right = nil
   end
 
 end
