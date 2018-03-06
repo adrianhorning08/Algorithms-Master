@@ -32,10 +32,25 @@ class BinarySearchTree
   end
 
   def delete(value)
+    # find if it exists
+    node = find(value)
+    return nil if node.nil?
+
+    if node == @root
+      @root = nil
+    else
+      find_and_delete_node(value, @root)
+    end
+
   end
 
   # helper method for #delete:
   def maximum(tree_node = @root)
+    if tree_node.right
+      maximum(tree_node.right)
+    else
+      return tree_node.value
+    end
   end
 
   def depth(tree_node = @root)
@@ -49,6 +64,19 @@ class BinarySearchTree
 
 
   private
+  def find_and_delete_node(value, tree_node)
+    node = find(value)
+    puts node == tree_node
+    if node == tree_node
+      tree_node = nil
+    else
+      if value < tree_node.value
+        find_and_delete_node(value, tree_node.left)
+      else
+        find_and_delete_node(value, tree_node.right)
+      end
+    end
+  end
   # optional helper methods go here:
   def insert_helper(value, tree_node)
     if value <= tree_node.value
