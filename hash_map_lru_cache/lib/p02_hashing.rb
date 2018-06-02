@@ -12,17 +12,11 @@ end
 
 class String
   def hash
-    sum = 0
-    self.split('').each_with_index do |el, i|
-      sum += (el.ord * i)
-    end
-    sum
+    chars.map(&:ord).hash
   end
 end
 
 class Hash
-  # This returns 0 because rspec will break if it returns nil
-  # Make sure to implement an actual Hash#hash method
   def hash
     to_a.sort_by(&:hash).hash
   end
